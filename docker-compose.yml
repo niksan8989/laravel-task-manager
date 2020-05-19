@@ -51,5 +51,17 @@ services:
       - ./:/var/www
     working_dir: /var/www
     tty: true
+  sheduler:
+    build:
+      context: ./docker
+      dockerfile: sheduler.docker
+    volumes:
+      - ./:/var/www
+    entrypoint:
+      - /docker-entrypoint.sh
+    links:
+      - db
+    depends_on:
+      - php-fpm
 volumes:
   db:
