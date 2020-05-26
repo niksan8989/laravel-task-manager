@@ -1,3 +1,5 @@
+check: lint cs-check
+
 docker-up:
 	docker-compose up -d
 
@@ -32,3 +34,7 @@ assets-dev:
 
 assets-watch:
 	docker-compose exec node npm run watch
+lint:
+	docker-compose run --rm php-cli composer lint
+cs-check:
+	docker-compose run --rm php-cli composer cs-check
