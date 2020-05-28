@@ -26,6 +26,9 @@ services:
     build:
       context: ./docker
       dockerfile: php-cli.docker
+      args:
+        - "USER_ID=${USER_ID}"
+        - "GROUP_ID=${GROUP_ID}"
     volumes:
       - ./:/var/www
     links:
