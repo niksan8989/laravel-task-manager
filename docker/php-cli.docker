@@ -1,11 +1,14 @@
 FROM php:7.2-cli
 
 RUN apt-get update && apt-get install -y libmcrypt-dev zip unzip git \
-    && docker-php-ext-install pdo_mysql bcmath
+    && docker-php-ext-install pdo_mysql bcmath \
+    && pecl install xdebug \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-ADD ./php/default.ini /usr/local/etc/php/conf.d/default.ini
+COPY ./php/conf.d /usr/local/etc/php/conf.d
 
 WORKDIR /var/www
