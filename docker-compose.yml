@@ -5,6 +5,9 @@ services:
     build:
       context: ./docker
       dockerfile: nginx.docker
+      args:
+        - "USER_ID=${USER_ID}"
+        - "GROUP_ID=${GROUP_ID}"
     volumes:
       - ./:/var/www
     ports:
@@ -15,6 +18,9 @@ services:
     build:
       context: ./docker
       dockerfile: php-fpm.docker
+      args:
+        - "USER_ID=${USER_ID}"
+        - "GROUP_ID=${GROUP_ID}"
     environment:
       PHP_IDE_CONFIG: serverName=TaskManager
     volumes:
@@ -51,10 +57,11 @@ services:
     image: redis
     hostname: redis
   node:
-    image: node:8.6-alpine
+    build:
+      context: ./docker
+      dockerfile: node.docker
     volumes:
       - ./:/var/www
-    working_dir: /var/www
     tty: true
   sheduler:
     build:

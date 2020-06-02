@@ -17,5 +17,3 @@ RUN usermod -u ${USER_ID} www-data && groupmod -g ${GROUP_ID} www-data
 COPY ./php/conf.d /usr/local/etc/php/conf.d
 
 WORKDIR /var/www
-
-USER "${USER_ID}:${GROUP_ID}"
