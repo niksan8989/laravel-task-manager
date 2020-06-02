@@ -12,7 +12,8 @@
         "ext-json": "*",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/data-transfer-object": "^1.13"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
