@@ -27,4 +27,9 @@ abstract class Query
     {
         return $this->model->findOrFail($id);
     }
+
+    public function findBy($field, $value)
+    {
+        return $this->model->where($field, $value)->first();
+    }
 }
