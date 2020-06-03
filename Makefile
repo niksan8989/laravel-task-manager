@@ -38,3 +38,5 @@ lint:
 	docker-compose run --rm php-cli composer lint
 cs-check:
 	docker-compose run --rm php-cli composer cs-check
+test-unit:
+	docker-compose run --rm php-cli composer test -- --testsuite=Unit
